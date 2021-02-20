@@ -22,12 +22,12 @@ func TestMain(t *testing.T) {
 		InvokedFunctionArn: "arn:aws:lambda:us-east-2:123456789012:function:cloudwatch-alert",
 	})
 	inputJSON := ReadJSONFromFile(t, "../event.json")
-	var event events.SQSEvent
+	var event events.CloudWatchEvent
 	err := json.Unmarshal(inputJSON, &event)
 	if err != nil {
 		t.Errorf("could not unmarshal event. details: %v", err)
 	}
-	//var inputEvent SQSEvent
+	//var inputEvent CloudWatchEvent
 	result, err := handleRequest(ctx, event)
 	if err != nil {
 		t.Log(err)

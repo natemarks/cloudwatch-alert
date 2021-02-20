@@ -40,7 +40,7 @@ func executeLookups(targets []string) (string, error) {
 	return "job status: success", nil
 }
 
-func handleRequest(ctx context.Context, event events.SQSEvent) (string, error) {
+func handleRequest(ctx context.Context, event events.CloudWatchEvent) (string, error) {
 	// event
 	eventJSON, _ := json.MarshalIndent(event, "", "  ")
 	log.Printf("EVENT: %s", eventJSON)
